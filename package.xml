@@ -11,6 +11,7 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <depend>sbc15_msgs</depend>
+  <depend>lightfsm</depend>
 
   <depend>rospy</depend>
   <depend>roscpp</depend>

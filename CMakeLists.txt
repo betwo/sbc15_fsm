@@ -8,8 +8,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 
 find_package(catkin REQUIRED COMPONENTS
-  rospy
   sbc15_msgs
+  lightfsm
+
+  rospy
   roscpp
   std_msgs
   tf
@@ -34,27 +36,14 @@ link_directories(${catkin_LIBRARY_DIRS})
 catkin_package(
 )
 
-add_library(lightfsm
-  src/lightfsm/action.cpp
-  src/lightfsm/actions.cpp
-  src/lightfsm/event.cpp
-  src/lightfsm/guard.cpp
-  src/lightfsm/meta_state.cpp
-  src/lightfsm/state_machine_basic_executor.cpp
-  src/lightfsm/state_machine_executor.cpp
-  src/lightfsm/state_machine.cpp
-  src/lightfsm/state.cpp
-  src/lightfsm/transition.cpp
-  src/lightfsm/triggered_event.cpp
+add_library(lightfsm_ros
+  src/lightfsm_ros/state_machine_ros_executor.cpp
 )
-target_include_directories(lightfsm
+target_include_directories(lightfsm_ros
   PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/include
 )
 
-add_library(lightfsm_ros
-  src/lightfsm_ros/state_machine_ros_executor.cpp
-)
 target_link_libraries(lightfsm_ros
   lightfsm
 )
